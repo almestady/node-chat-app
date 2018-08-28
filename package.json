@@ -8,10 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
-    "engine": {
+    "engines": {
       "node": "10.8.0"
-    }
-  ,
+    },
   "author": "",
   "license": "ISC",
   "dependencies": {
