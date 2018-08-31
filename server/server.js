@@ -15,21 +15,20 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-socket.emit('newEmail', {
-  from:"Alwaleed@almestady.com",
-  text:"Hey. Asslam Alikum :-{)",
-  createdAt:12345
+socket.on('createMessage',(message) => {
+  io.emit('newMessage',{
+    from:message.from,
+    text:message.text,
+    createdAt:new Date().getTime()
+  });
 });
 
-socket.on('createMessage', function(message){
-  console.log(message);
-});
 
   socket.on('disconnect', () => {
     console.log('Disconnected from client');
-  })
-});
+  });
 
+});
 
 
 app.get('/', function(req, res) {
