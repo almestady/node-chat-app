@@ -23,13 +23,11 @@ socket.on('createMessage',(message) => {
   });
 });
 
-
-  socket.on('disconnect', () => {
+socket.on('disconnect', () => {
     console.log('Disconnected from client');
   });
 
 });
-
 
 app.get('/', function(req, res) {
 
