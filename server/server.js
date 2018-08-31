@@ -15,6 +15,16 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+socket.emit('newMessage',{
+  from:"Admin",
+  text:'Welcome to the Chat App'
+});
+
+  socket.broadcast.emit('newChat',{
+    from:'Admin',
+    text:'new user joined'
+  });
+
 socket.on('createMessage',(message) => {
   io.emit('newMessage',{
     from:message.from,
@@ -28,6 +38,7 @@ socket.on('disconnect', () => {
   });
 
 });
+
 
 app.get('/', function(req, res) {
 
