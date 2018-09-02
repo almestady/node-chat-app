@@ -20,9 +20,10 @@ socket.emit('newMessage',generateMessage('wael','Alsslam Alikum'));
 
   socket.broadcast.emit('newChat',generateMessage('Admin','new user joined'));
 
-socket.on('createMessage',(message) => {
+socket.on('createMessage',(message,callback) => {
   io.emit('newMessage',generateMessage(
     message.from,message.text));
+    callback('This is from the server');
 });
 
 socket.on('disconnect', () => {
